@@ -136,7 +136,7 @@ configure_file (
 set_source_files_properties ( ${SRC_ASM} PROPERTIES LANGUAGE C )
 
 # Compile libffi
-add_library ( ffi SHARED ${SRC_C} ${SRC_ASM} )
+add_library ( ffi ${SRC_C} ${SRC_ASM} )
 
 # Install
 install_library ( ffi )
