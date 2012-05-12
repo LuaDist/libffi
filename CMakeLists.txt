@@ -6,7 +6,7 @@
 
 project ( libffi C )
 cmake_minimum_required ( VERSION 2.6 )
-include ( dist.cmake )
+include ( cmake/dist.cmake )
 
 # NOTE: For now this only supports x86 systems, mainly OSX, Linux and Windows (32/64bit)
 set (TARGET X86 )
@@ -139,10 +139,10 @@ set_source_files_properties ( ${SRC_ASM} PROPERTIES LANGUAGE C )
 add_library ( ffi SHARED ${SRC_C} ${SRC_ASM} )
 
 # Install
-install ( TARGETS ffi RUNTIME DESTINATION ${INSTALL_BIN} LIBRARY DESTINATION ${INSTALL_LIB} ARCHIVE DESTINATION ${INSTALL_LIB} )
-install ( DIRECTORY doc/ DESTINATION ${INSTALL_DOC} )
-install ( FILES ${PROJECT_BINARY_DIR}/ffi.h ${PROJECT_BINARY_DIR}/fficonfig.h src/x86/ffitarget.h DESTINATION ${INSTALL_INC} )
-install ( FILES LICENSE README DESTINATION ${INSTALL_DATA} )
+install_library ( ffi )
+install_doc ( doc/ )
+install_header ( ${PROJECT_BINARY_DIR}/ffi.h ${PROJECT_BINARY_DIR}/fficonfig.h src/x86/ffitarget.h )
+install_data ( LICENSE README )
 
 # Testing
 enable_testing ()
